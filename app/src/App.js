@@ -5,6 +5,7 @@ import Home from './component/Home';
 
 import Voting from './component/Voting/Voting';
 import Outcomes from './component/Outcomes/Outcomes';
+import FinalOutcomes from './component/Final_Outcomes/Final_Outcomes';
 import Registration from './component/Registration/Registration';
 
 import AddNews from './component/Admin/AddNews/AddNews';
@@ -26,6 +27,7 @@ export default class App extends Component {
             <Route exact path="/AddNews" component={AddNews} />
             <Route exact path="/Voting" component={Voting} />
             <Route exact path="/Outcomes" component={Outcomes} />
+            <Route exact path="/Final_Outcomes" component={FinalOutcomes} />
             <Route exact path="/Registration" component={Registration} />
             <Route exact path="/Verification" component={Verification} />
             <Route exact path="/test" component={test} />

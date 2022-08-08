@@ -29,6 +29,7 @@ const NavigationAdmin = () => {
         },
         { name: 'Verify News', href: '/Voting', icon: CalendarIcon, uid: 3 },
         { name: 'Outcome', href: '/Outcomes', icon: InboxIcon, uid: 4 },
+        { name: 'Final Outcome', href: '/Final_Outcomes', icon: InboxIcon, uid: 5 },
       ]
 
   const handleSetActiveTab = () => {

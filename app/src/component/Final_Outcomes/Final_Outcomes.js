@@ -12,7 +12,7 @@ import getWeb3 from '../../getWeb3';
 import newsDetection from '../../contracts/newsDetection.json';
 
 // CSS
-import './Outcomes.css';
+import './Final_Outcomes.css';
 
 export default class Result extends Component {
   constructor(props) {
@@ -223,19 +223,6 @@ export function displayOutcomes(newss) {
             <div className="container-item border border-sky-600 text-sky-600">
               <center>That is all.</center>
             </div>
-
-            <div className="container-item bg-slate-700 text-white">
-            <center>
-              
-              <p>To see the Final Outcomes.</p>
-              <br />
-              <Link to="/Final_Outcomes" className="text-sky-600 underline">
-                Final Outcome
-              </Link>
-            </center>
-          </div>
-
-            
           </>
         )}
       </div>
