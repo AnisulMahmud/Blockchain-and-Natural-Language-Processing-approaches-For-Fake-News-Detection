@@ -17,16 +17,18 @@ gh repo clone AnisulMahmud/Blockchain-and-Natural-Language-Processing-approaches
 ## Then install in the local directory 
 npm i -g truffle
 
-## Then run this two commands
-truffle compile
-truffle migrate
-```
-Open [Ganache](https://trufflesuite.com/ganache/) and import two test accounts into [MetaMask](https://metamask.io/)
+## Then run this commands
 
-## Then 
-cd Blockchain-and-Natural-Language-Processing-approaches-For-Fake-News-Detection/app
-npm install
-npm start
-```
+- truffle compile
+
+- truffle migrate
+
+- ganache-ali.cmd in the local directory to open [Ganache](https://trufflesuite.com/ganache/) and import two or more test accounts into [MetaMask](https://metamask.io/)
+
+## Then run this commands
+- cd Blockchain-and-Natural-Language-Processing-approaches-For-Fake-News-Detection/app
+- npm install
+- npm start
+
 Then open `http://localhost:3000/` to see the app.
 
