@@ -11,9 +11,7 @@ Fake news detection using Ethereum Blockchain
 -  Cryptocurrency Wallet [MetaMask])
 
 
-
-```
-## Clone : First of clone this pepository 
+## Clone : First of all clone this pepository 
 gh repo clone AnisulMahmud/Blockchain-and-Natural-Language-Processing-approaches-For-Fake-News-Detection
 
 ## Then install in the local directory 
