@@ -147,7 +147,7 @@ export default class Voting extends Component {
       <div className="container-item">
         <div className="news-info text-white">
           <h2>
-            {news.newsPost} <small>#{news.id}</small>
+            {news.newsPost} 
           </h2>
         </div>
         <div className="vote-btn-container">
@@ -161,7 +161,7 @@ export default class Voting extends Component {
               this.state.currentEvaluator.hasVoted
             }
           >
-            Vote as Authentic
+            Verify as Authentic
           </button>
           <button
             onClick={() => confirmVote(news.id, news.newsPost, true)}
@@ -173,7 +173,7 @@ export default class Voting extends Component {
               this.state.currentEvaluator.hasVoted
             }
           >
-            Vote as Fake
+            Verify as Fake
           </button>
         </div>
       </div>
@@ -204,7 +204,7 @@ export default class Voting extends Component {
                     <div className="container-item bg-slate-700">
                       <div>
                         <strong className="text-white text-md">
-                          You've casted your vote for authentic news.
+                          You've verify the news.
                         </strong>
                         <p />
                         <center>
@@ -216,7 +216,7 @@ export default class Voting extends Component {
                     </div>
                   ) : (
                     <div className="container-item bg-slate-700 text-white">
-                      <center>vote for true news.</center>
+                      <center>Verify the news</center>
                     </div>
                   )
                 ) : (
@@ -245,10 +245,9 @@ export default class Voting extends Component {
               )}
               <div className="container-main">
                 <h3 className="text-2xl text-white">News</h3>
-                <small>Total news: {this.state.newss.length}</small>
                 {this.state.newss.length < 1 ? (
                   <div className="container-item bg-slate-700">
-                    <center>Not one to vote for.</center>
+                    <center>No news to verify!.</center>
                   </div>
                 ) : (
                   <>

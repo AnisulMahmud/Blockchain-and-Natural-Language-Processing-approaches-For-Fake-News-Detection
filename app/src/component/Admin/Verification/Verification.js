@@ -198,6 +198,7 @@ export default class Registration extends Component {
             </div>
           ) : (
             <>
+            <div className="text-white mb-3">Only Journalist or news vlogger should be approved!!</div>
               <div className="container-item bg-slate-900 p-5 text-white">
                 <center className="text-sky-600">
                   List of registered evaluators

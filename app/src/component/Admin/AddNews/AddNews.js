@@ -136,7 +136,7 @@ export default class AddNews extends Component {
                 className="bg-sky-500 hover:bg-blue-700 text-white font-bold px-10 py-3 mt-5 ml-2 rounded"
                 disabled={
                   this.state.newsPost.length < 3 ||
-                  this.state.newsPost.length > 100
+                  this.state.newsPost.length > 1000
                 }
                 onClick={this.addNews}
               >
@@ -157,7 +157,7 @@ export function loadAdded(newss) {
         <div className="container-list bg-slate-900 text-sky-600">
           <div
             style={{
-              maxHeight: "21px",
+              maxHeight: "75px",
             }}
           >
             {news.id}. <strong>{news.newsPost}</strong>{" "}

@@ -145,60 +145,85 @@ export default class Result extends Component {
   }
 }
 
-function displayWinner(newss) {
-  const getWinner = (newss) => {
-    // Returns an object having maxium vote count
-    let maxVoteRecived = 0;
-    let winnernews = [];
-    for (let i = 0; i < newss.length; i++) {
-      if (newss[i].voteCount - newss[i].fakeCount > maxVoteRecived) {
-        maxVoteRecived = newss[i].voteCount;
-        winnernews = [newss[i]];
-      } else if (newss[i].voteCount - newss[i].fakeCount === maxVoteRecived) {
-        winnernews.push(newss[i]);
-      }
-    }
-    return winnernews;
-  };
-  const renderWinner = (winner) => {
-    return (
-      <div className="container-winner">
-        <div className="winner-info">
-          <p className="winner-tag">Given News</p>
-          <h2> {winner.newsPost}</h2>
-        </div>
-        <div className="winner-votes">
-          <div className="votes-tag">Total Votes for Authentic: </div>
-          <div className="vote-count">{winner.voteCount}</div>
-          <div className="votes-tag">Total Votes for Fake: </div>
-          <div className="vote-count">{winner.fakeCount}</div>          
-        </div>
-      </div>
-    );
-  };
-  const winnernews = getWinner(newss);
-  return <>{winnernews.map(renderWinner)}</>;
-}
-
-
-
 export function displayOutcomes(newss) {
-  const renderOutcomes = (news) => {
+  const renderOutcomes1 = (news) => {
+    const nlpResult = localStorage.getItem('nlpResults')
+    
+
+    const prevAuth  = (parseInt(news.voteCount) / (parseInt(news.voteCount) +
+    parseInt(news.fakeCount))) * 100
+    const newAuth = (100 + prevAuth ) / 2
+
+    const prevFake = (parseInt(news.fakeCount) / (parseInt(news.voteCount) +
+    parseInt(news.fakeCount))) * 100
+    const newFake = (100 + prevFake ) / 2
+
     return (
       <tr>
         <td>{news.id}</td>
         <td>{news.newsPost}</td>
-        <td>{`Authentic: ${(parseInt(news.voteCount) / (parseInt(news.voteCount) +
-          parseInt(news.fakeCount))) * 100}%`} </td>
-        <td>{`Fake: ${(parseInt(news.fakeCount) / (parseInt(news.voteCount) +
-          parseInt(news.fakeCount))) * 100}%`} </td>
+        <td>{`Authentic: ${nlpResult ? (parseInt(nlpResult) === 1 ? newAuth : (0 + prevAuth) / 2) : prevAuth}%`}</td>
+      <td>{`Fake: ${nlpResult ? (parseInt(nlpResult) === 0 ? newFake : (0 + prevFake) / 2) : prevFake }%`} </td>
       </tr>
     );
   };
+
+  function displayNews(news) {
+    function voteNews(id, vote) {
+      localStorage.setItem('nlpResults', vote)
+      window.location.reload()
+    }
+      return (
+        <tr>
+          <td>{news.id}</td>
+          <td>{news.newsPost}</td>
+          <td>
+            <div className='flex items-center'>
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
+                onClick={() => voteNews(news.id, 1)}
+              >
+                Authentic
+              </button>
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
+              onClick={() => voteNews(news.id, 0)}
+              >
+                Fake
+              </button>
+            </div>
+          </td>
+        </tr>
+      );
+  }
+
+
   return (
     <>
       {newss.length > 0 ? (
-        <div className="container-main">{displayWinner(newss)}</div>
+        <div className="container-main">
+        <div className='flex justify-end'>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
+          >
+            <a href='https://curvy-poets-leave-34-86-92-27.loca.lt/' target="_blank" rel="noreferrer">NLP MODEL</a>
+          </button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
+            onClick={() => localStorage.clear()}
+            >
+              Clear previous values
+          </button>
+        </div>
+          <div className="text-white mb-3">What do you get from NLP model:</div>
+          <div className="container-item bg-slate-900 text-sky-600">
+              <table>
+                <tr>
+                  <th>Id</th>
+                  <th>News</th>
+                  <th>Authenticity or Fake </th>
+                </tr>
+                {newss.map(news => displayNews(news))}
+              </table>
+            </div>
+          
+        </div>
       ) : null}
       <div className="container-main" style={{ borderTop: '1px solid' }}>
         <h3 className="text-2xl text-white">Outcomes</h3>
@@ -209,6 +234,9 @@ export function displayOutcomes(newss) {
           </div>
         ) : (
           <>
+          <div className="container-item border border-sky-600 text-sky-600">
+          <center>BlockChain and NLP model Integrated Final Outcome</center>
+        </div>
             <div className="container-item bg-slate-900 text-sky-600">
               <table>
                 <tr>
@@ -217,7 +245,7 @@ export function displayOutcomes(newss) {
                   <th>Authenticity Percentage </th>
                   <th>Fake Percentage </th>
                 </tr>
-                {newss.map(renderOutcomes)}
+                {newss.map(renderOutcomes1)}
               </table>
             </div>
             <div className="container-item border border-sky-600 text-sky-600">

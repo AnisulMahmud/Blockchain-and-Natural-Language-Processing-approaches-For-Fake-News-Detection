@@ -147,7 +147,7 @@ export default class Result extends Component {
 
 function displayWinner(newss) {
   const getWinner = (newss) => {
-    // Returns an object having maxium vote count
+   
     let maxVoteRecived = 0;
     let winnernews = [];
     for (let i = 0; i < newss.length; i++) {
@@ -220,20 +220,21 @@ export function displayOutcomes(newss) {
                 {newss.map(renderOutcomes)}
               </table>
             </div>
-            <div className="container-item border border-sky-600 text-sky-600">
-              <center>That is all.</center>
-            </div>
+
+
 
             <div className="container-item bg-slate-700 text-white">
             <center>
               
-              <p>To see the Final Outcomes.</p>
+              <p>To see the BlockChain and NLP model Integrated Outcome</p>
               <br />
               <Link to="/Final_Outcomes" className="text-sky-600 underline">
-                Final Outcome
+              Integrated Final Outcome
               </Link>
             </center>
           </div>
+
+            
 
             
           </>

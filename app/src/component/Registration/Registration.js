@@ -270,7 +270,7 @@ export default class Registration extends Component {
               </div>
             ) : null}
           </div>
-        )} 
+
       </div>
     );
   }
