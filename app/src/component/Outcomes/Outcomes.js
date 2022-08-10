@@ -168,9 +168,9 @@ function displayWinner(newss) {
           <h2> {winner.newsPost}</h2>
         </div>
         <div className="winner-votes">
-          <div className="votes-tag">Total Votes for Authentic: </div>
+          <div className="votes-tag">Total Verification for Authentic: </div>
           <div className="vote-count">{winner.voteCount}</div>
-          <div className="votes-tag">Total Votes for Fake: </div>
+          <div className="votes-tag">Total Verification for Fake: </div>
           <div className="vote-count">{winner.fakeCount}</div>          
         </div>
       </div>
@@ -226,7 +226,7 @@ export function displayOutcomes(newss) {
             <div className="container-item bg-slate-700 text-white">
             <center>
               
-              <p>To see the BlockChain and NLP model Integrated Outcome</p>
+              <p>To see the BlockChain and NLP Integrated Outcome</p>
               <br />
               <Link to="/Final_Outcomes" className="text-sky-600 underline">
               Integrated Final Outcome

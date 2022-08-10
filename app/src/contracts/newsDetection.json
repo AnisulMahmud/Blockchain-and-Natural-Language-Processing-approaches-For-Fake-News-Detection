@@ -9229,10 +9229,16 @@
       "links": {},
       "address": "0x672Df0C23a023Bf949B4A13eF794CD802b022f98",
       "transactionHash": "0x656792a8e5d6d9cad2c61d5e5357a307b10a91110960236f9d9218ced78086c9"
+    },
+    "1660109684318": {
+      "events": {},
+      "links": {},
+      "address": "0x03352B1fce11a0f62b69A8870D76D01E39ccEc38",
+      "transactionHash": "0x8954d5b4e5dd17d3264e66225aa15c4c77042f290c94f376589d2c679bab0d3a"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2022-08-09T15:43:37.952Z",
+  "updatedAt": "2022-08-10T05:35:39.418Z",
   "devdoc": {
     "methods": {}
   },

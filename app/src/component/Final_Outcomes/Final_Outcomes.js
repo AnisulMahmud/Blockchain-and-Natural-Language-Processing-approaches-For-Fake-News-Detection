@@ -203,12 +203,14 @@ export function displayOutcomes(newss) {
         <div className='flex justify-end'>
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
           >
-            <a href='https://curvy-poets-leave-34-86-92-27.loca.lt/' target="_blank" rel="noreferrer">NLP MODEL</a>
+            <a href='https://hungry-feet-heal-35-237-100-17.loca.lt/' target="_blank" rel="noreferrer">NLP MODEL</a>
           </button>
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
             onClick={() => localStorage.clear()}
+            
             >
               Clear previous values
+              
           </button>
         </div>
           <div className="text-white mb-3">What do you get from NLP model:</div>
@@ -235,7 +237,7 @@ export function displayOutcomes(newss) {
         ) : (
           <>
           <div className="container-item border border-sky-600 text-sky-600">
-          <center>BlockChain and NLP model Integrated Final Outcome</center>
+          <center>BlockChain and NLP Integrated Final Outcome</center>
         </div>
             <div className="container-item bg-slate-900 text-sky-600">
               <table>
