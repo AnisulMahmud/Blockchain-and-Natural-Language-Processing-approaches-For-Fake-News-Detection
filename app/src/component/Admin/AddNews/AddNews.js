@@ -94,7 +94,7 @@ export default class AddNews extends Component {
     let toLang = 'en'; // translate to bengali
     let text = this.state.newsPost;
 
-    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+    const API_KEY = '';
 
     let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
     url += '&q=' + encodeURI(text);
@@ -183,7 +183,7 @@ export function loadAdded(newss) {
     let toLang = 'bn'; // translate to bengali
     let text = news.newsPost;
 
-    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+    const API_KEY = '';
 
     let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
     url += '&q=' + encodeURI(text);

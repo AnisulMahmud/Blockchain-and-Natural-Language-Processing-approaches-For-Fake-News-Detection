@@ -166,7 +166,7 @@ function displayWinner(newss) {
     let text = newss.newsPost;
     let translatedText = '';
 
-    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+    const API_KEY = '';
 
     let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
     url += '&q=' + encodeURI(text);
@@ -215,7 +215,7 @@ export function displayOutcomes(newss) {
     let text = news.newsPost;
     let translatedText = '';
 
-    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+    const API_KEY = '';
 
     let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
     url += '&q=' + encodeURI(text);
