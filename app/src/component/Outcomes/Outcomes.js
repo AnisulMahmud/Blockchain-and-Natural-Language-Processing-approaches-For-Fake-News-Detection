@@ -161,11 +161,37 @@ function displayWinner(newss) {
     return winnernews;
   };
   const renderWinner = (winner) => {
+    let fromLang = 'en';
+    let toLang = 'bn'; // translate to bengali
+    let text = newss.newsPost;
+    let translatedText = '';
+
+    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+
+    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    url += '&q=' + encodeURI(text);
+    url += `&source=${fromLang}`;
+    url += `&target=${toLang}`;
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        localStorage.setItem('translatedTextForRender', response.data.translations[0].translatedText)
+      })
+      .catch((error) => {
+        console.log('There was an error with the translation request: ', error);
+      });
     return (
       <div className="container-winner">
         <div className="winner-info">
           <p className="winner-tag">Given News</p>
-          <h2> {winner.newsPost}</h2>
+          <h2> {localStorage.getItem('translatedTextForRender')}</h2>
         </div>
         <div className="winner-votes">
           <div className="votes-tag">Total Verification for Authentic: </div>
@@ -184,10 +210,37 @@ function displayWinner(newss) {
 
 export function displayOutcomes(newss) {
   const renderOutcomes = (news) => {
+    let fromLang = 'en';
+    let toLang = 'bn'; // translate to bengali
+    let text = news.newsPost;
+    let translatedText = '';
+
+    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+
+    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    url += '&q=' + encodeURI(text);
+    url += `&source=${fromLang}`;
+    url += `&target=${toLang}`;
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        localStorage.setItem('translatedTextForRender', response.data.translations[0].translatedText)
+      })
+      .catch((error) => {
+        console.log('There was an error with the translation request: ', error);
+      });
+
     return (
       <tr>
         <td>{news.id}</td>
-        <td>{news.newsPost}</td>
+        <td>{localStorage.getItem('translatedTextForRender')}</td>
         <td>{`Authentic: ${(parseInt(news.voteCount) / (parseInt(news.voteCount) +
           parseInt(news.fakeCount))) * 100}%`} </td>
         <td>{`Fake: ${(parseInt(news.fakeCount) / (parseInt(news.voteCount) +

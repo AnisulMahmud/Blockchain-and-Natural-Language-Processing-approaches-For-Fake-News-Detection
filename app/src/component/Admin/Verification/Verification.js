@@ -109,7 +109,7 @@ export default class Registration extends Component {
                 <th>Name</th>
                 <th>Profession</th>
                 <th>Id</th>
-                <th>Voted</th>
+                <th>Verify News</th>
               </tr>
               <tr>
                 <td>{evaluator.name}</td>
@@ -142,11 +142,11 @@ export default class Registration extends Component {
               <td>{evaluator.idn}</td>
             </tr>
             <tr>
-              <th>Voted</th>
+              <th>Verify News</th>
               <td>{evaluator.hasVoted ? "True" : "False"}</td>
             </tr>
             <tr>
-              <th>Verified</th>
+              <th>Verified by News Publisher</th>
               <td>{evaluator.isVerified ? "True" : "False"}</td>
             </tr>
             <tr>

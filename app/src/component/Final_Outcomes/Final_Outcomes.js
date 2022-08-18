@@ -158,10 +158,12 @@ export function displayOutcomes(newss) {
     parseInt(news.fakeCount))) * 100
     const newFake = (100 + prevFake ) / 2
 
+    const translatedTextForRender = localStorage.getItem('translatedTextForRender')
+
     return (
       <tr>
         <td>{news.id}</td>
-        <td>{news.newsPost}</td>
+        <td>{translatedTextForRender}</td>
         <td>{`Authentic: ${nlpResult ? (parseInt(nlpResult) === 1 ? newAuth : (0 + prevAuth) / 2) : prevAuth}%`}</td>
       <td>{`Fake: ${nlpResult ? (parseInt(nlpResult) === 0 ? newFake : (0 + prevFake) / 2) : prevFake }%`} </td>
       </tr>
@@ -169,14 +171,43 @@ export function displayOutcomes(newss) {
   };
 
   function displayNews(news) {
+
     function voteNews(id, vote) {
       localStorage.setItem('nlpResults', vote)
       window.location.reload()
     }
+    let fromLang = 'en';
+    let toLang = 'bn'; // translate to bengali
+    let text = newss[0].newsPost;
+    let translatedText = '';
+
+    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+
+    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    url += '&q=' + encodeURI(text);
+    url += `&source=${fromLang}`;
+    url += `&target=${toLang}`;
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        localStorage.setItem('translatedTextForRender', response.data.translations[0].translatedText)
+      })
+      .catch((error) => {
+        console.log('There was an error with the translation request: ', error);
+      });
+
+
       return (
         <tr>
           <td>{news.id}</td>
-          <td>{news.newsPost}</td>
+          <td>{localStorage.getItem('translatedTextForRender')}</td>
           <td>
             <div className='flex items-center'>
               <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
@@ -203,15 +234,9 @@ export function displayOutcomes(newss) {
         <div className='flex justify-end'>
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
           >
-            <a href='https://hungry-feet-heal-35-237-100-17.loca.lt/' target="_blank" rel="noreferrer">NLP MODEL</a>
+            <a href='https://calm-donuts-jump-34-136-60-122.loca.lt/' target="_blank" rel="noreferrer">NLP MODEL</a>
           </button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
-            onClick={() => localStorage.clear()}
-            
-            >
-              Clear previous values
-              
-          </button>
+
         </div>
           <div className="text-white mb-3">What do you get from NLP model:</div>
           <div className="container-item bg-slate-900 text-sky-600">

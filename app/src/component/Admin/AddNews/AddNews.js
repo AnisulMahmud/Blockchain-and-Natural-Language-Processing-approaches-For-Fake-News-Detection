@@ -20,7 +20,7 @@ export default class AddNews extends Component {
       isAdmin: false,
       newsPost: "",
       newss: [],
-      newsCount: undefined,
+      newsCount: undefined
     };
   }
 
@@ -90,10 +90,37 @@ export default class AddNews extends Component {
 
 
   addNews = async () => {
-    await this.state.newsDetectionInstance.methods
-      .addNews(this.state.newsPost)
-      .send({ from: this.state.account, gas: 1000000 });
-    window.location.reload();
+    let fromLang = 'bn';
+    let toLang = 'en'; // translate to bengali
+    let text = this.state.newsPost;
+
+    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+
+    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    url += '&q=' + encodeURI(text);
+    url += `&source=${fromLang}`;
+    url += `&target=${toLang}`;
+
+    let translatedText = '';
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        translatedText = response.data.translations[0].translatedText;
+        this.state.newsDetectionInstance.methods
+          .addNews(translatedText)
+          .send({ from: this.state.account, gas: 1000000 });
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log('There was an error with the translation request: ', error);
+      });
   };
 
   render() {
@@ -152,16 +179,47 @@ export default class AddNews extends Component {
 }
 export function loadAdded(newss) {
   const renderAdded = (news) => {
+    let fromLang = 'en';
+    let toLang = 'bn'; // translate to bengali
+    let text = news.newsPost;
+
+    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+
+    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    url += '&q=' + encodeURI(text);
+    url += `&source=${fromLang}`;
+    url += `&target=${toLang}`;
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        
+        localStorage.setItem('translatedTextForRender', response.data.translations[0].translatedText)
+        
+      })
+      .catch((error) => {
+        console.log('There was an error with the translation request: ', error);
+      });
     return (
+      
       <>
         <div className="container-list bg-slate-900 text-sky-600">
-          <div
+          {localStorage.getItem('translatedTextForRender') &&  (
+            
+            <div
             style={{
               maxHeight: "75px",
             }}
           >
-            {news.id}. <strong>{news.newsPost}</strong>{" "}
+            {news.id}. <strong>{localStorage.getItem('translatedTextForRender')}</strong>{" "}
           </div>
+          )}
         </div>
       </>
     );

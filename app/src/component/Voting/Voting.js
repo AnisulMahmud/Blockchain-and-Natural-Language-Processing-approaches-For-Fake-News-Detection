@@ -91,6 +91,7 @@ export default class Voting extends Component {
           newsPost: news.newsPost,
         });
       }
+      console.log({newss: this.state.newss});
       this.setState({ newss: this.state.newss });
 
       // Loading current Evaluator
@@ -125,6 +126,33 @@ export default class Voting extends Component {
   };
 
   renderNewss = (news) => {
+    let fromLang = 'en';
+    let toLang = 'bn'; // translate to bengali
+    let text = news.newsPost;
+    let translatedText = '';
+
+    const API_KEY = 'AIzaSyAuO0pDNneTzg5zgk552tUwN84OA-r9LsA';
+
+    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    url += '&q=' + encodeURI(text);
+    url += `&source=${fromLang}`;
+    url += `&target=${toLang}`;
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        localStorage.setItem('translatedTextForRender', response.data.translations[0].translatedText)
+      })
+      .catch((error) => {
+        console.log('There was an error with the translation request: ', error);
+      });
+            
     const castVote = async (id, isFake) => {
       await this.state.newsDetectionInstance.methods
         .vote(id, isFake)
@@ -132,12 +160,13 @@ export default class Voting extends Component {
       window.location.reload();
     };
     const confirmVote = (id, newsPost, isFake) => {
+
       var r = window.confirm(
-        'Vote for ' +
-          newsPost +
+        'Verify This ' +
+        localStorage.getItem('translatedTextForRender') +
           ' with Id ' +
           id +
-          `.\nAre you sure is this ${isFake ? 'Fake' : 'True'} news?`
+          `.\nAre you sure is this ${isFake ? 'Fake' : 'Authentic'} news?`
       );
       if (r === true) {
         castVote(id, isFake);
@@ -147,7 +176,7 @@ export default class Voting extends Component {
       <div className="container-item">
         <div className="news-info text-white">
           <h2>
-            {news.newsPost} 
+            {localStorage.getItem('translatedTextForRender')} 
           </h2>
         </div>
         <div className="vote-btn-container">
@@ -178,10 +207,14 @@ export default class Voting extends Component {
         </div>
       </div>
     );
+
+            
+  
   };
 
   render() {
     if (!this.state.web3) {
+      
       return (
         <>
           {this.state.isAdmin ? <NavbarAdmin /> : <Navbar />}
@@ -189,8 +222,11 @@ export default class Voting extends Component {
         </>
       );
     }
+    
 
     return (
+     
+
       <div className="md:ml-64 mt-10">
         {this.state.isAdmin ? <NavbarAdmin /> : <Navbar />}
         <div>

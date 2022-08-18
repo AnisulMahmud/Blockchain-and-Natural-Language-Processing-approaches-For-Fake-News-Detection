@@ -302,11 +302,11 @@ export function loadCurrentEvaluator(evaluator, isRegistered) {
             <td>{evaluator.idn}</td>
           </tr>
           <tr>
-            <th>Voted</th>
+            <th>Verify news: </th>
             <td>{evaluator.hasVoted ? 'True' : 'False'}</td>
           </tr>
           <tr>
-            <th>Verification</th>
+            <th>Verified by News Publisher: </th>
             <td>{evaluator.isVerified ? 'True' : 'False'}</td>
           </tr>
           <tr>
@@ -341,11 +341,11 @@ export function loadAllEvaluators(evaluators) {
               <td>{evaluator.idn}</td>
             </tr>
             <tr>
-              <th>Voted</th>
+              <th>Verify news</th>
               <td>{evaluator.hasVoted ? 'True' : 'False'}</td>
             </tr>
             <tr>
-              <th>Verified</th>
+              <th>Verified by News Publisher</th>
               <td>{evaluator.isVerified ? 'True' : 'False'}</td>
             </tr>
             <tr>
