@@ -2,7 +2,7 @@
 
 
 
-Fake news detection using Ethereum Blockchain
+# Blockchain part
 
 ## Features
 -  Frontend built on React.js
@@ -32,3 +32,6 @@ npm i -g truffle
 
 Then open `http://localhost:3000/` to see the app.
 
+
+## After all this we connect our model with blockcahin. 
+A paper is comming on its way following this project. 
