@@ -40,7 +40,7 @@ There is a folder called NLP here, though all the files are not uploaded here. S
 
 ### We published a paper on IEEE XPlore. It has a open Access. See the paper for more info about the project and its working methods and flow.
 
-###  LINK : https://ieeexplore.ieee.org/document/10034750/references#references
+###  LINK : https://ieeexplore.ieee.org/document/10034750 
 #### DOI: 10.1109/ACCESS.2023.3241483
 
 ![image](https://user-images.githubusercontent.com/52384280/217448765-8f895203-b368-40a1-99d2-f6fa00c62657.png)
