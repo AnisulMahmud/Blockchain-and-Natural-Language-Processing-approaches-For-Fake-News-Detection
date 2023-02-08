@@ -1,4 +1,4 @@
-# Toward News Authenticity: Synthesizing Natural Language Processing and Human Expert Opinion to Evaluate News
+# Toward News Authenticity: Synthesizing Natural Language Processing [ Continuous Learning ] and Human Expert Opinion [Blockchain] to Evaluate News
 
 
 
@@ -38,7 +38,7 @@ There is a folder called NLP here, though all the files are not uploaded here. S
 
 ## IEEE PAPER: 
 
-### We published a paper on IEEE XPlore. It has a open Access. See the paper for more info about the project and its working methods and flow.
+### We published a paper on IEEE XPlore. It has an open Access. See the paper for more info about the project and its working methods and flow.
 
 ###  LINK : https://ieeexplore.ieee.org/document/10034750 
 #### DOI: 10.1109/ACCESS.2023.3241483
