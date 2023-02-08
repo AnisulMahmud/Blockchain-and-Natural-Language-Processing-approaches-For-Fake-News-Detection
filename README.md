@@ -1,8 +1,8 @@
-# Blockchain-and-Natural-Language-Processing-approaches-For-Fake-News-Detection
+# Toward News Authenticity: Synthesizing Natural Language Processing and Human Expert Opinion to Evaluate News
 
 
 
-# Blockchain part
+# Blockchain part ( Without NLP folder ) 
 
 ## Features
 -  Frontend built on React.js
@@ -32,6 +32,12 @@ npm i -g truffle
 
 Then open `http://localhost:3000/` to see the app.
 
+#After that we use continuous learning based NLP.
+There is a folder called NLP here, though all the files are not uploaded here. So after completing the NLP part, we connect NLP part and Blockcahin part to get a synthesized result. 
 
-## After all this we connect our model with blockcahin. 
-A paper is comming on its way following this project. 
+#IEEE PAPER
+
+##We published a paper on IEEE XPlore. It has a open Access. See the paper for more info about the project and its working methods and flow.
+
+#LINK : https://ieeexplore.ieee.org/document/10034750/references#references
+##DOI: 10.1109/ACCESS.2023.3241483
